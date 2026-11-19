@@ -1,0 +1,618 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-11-19T15:22:59.617010+00:00",
+  "corpus_sha256": "bf26a5341f84e0eeb18467b826a07b6ea23d29ed8141aaa75efd65c0a4799fde",
+  "dataset_sha256": "bf89442b320077151630e3ac24d678af4a7327d29d1112c25c9a19641a0a3b9e",
+  "answer_model": "gpt-4o",
+  "judge_model": "gpt-4o-mini",
+  "embedding_model": "text-embedding-3-small",
+  "threshold": 0.35,
+  "top_k": 4,
+  "deepeval_enabled": true,
+  "deepeval_version": "4.3.4",
+  "evaluated_cases": 10,
+  "dataset_cases": 10,
+  "summary": {
+    "top1": {
+      "hits": 7,
+      "total": 8
+    },
+    "top4": {
+      "hits": 8,
+      "total": 8
+    },
+    "fallback": {
+      "hits": 2,
+      "total": 2
+    },
+    "deepeval": {
+      "Answer Relevancy": {
+        "mean": 0.7833333333333333,
+        "count": 10
+      },
+      "Contextual Relevancy": {
+        "mean": 0.2826023391812866,
+        "count": 8
+      },
+      "Faithfulness": {
+        "mean": 0.880952380952381,
+        "count": 7
+      }
+    },
+    "errors": 0,
+    "metric_errors": 1
+  },
+  "cases": [
+    {
+      "id": "roles",
+      "kind": "direct",
+      "question": "Can an editor change billing or delete the workspace?",
+      "expected_headings": [
+        "Roles and permissions"
+      ],
+      "expected_output": "No. Only owners manage billing or delete a workspace. Editors can create and update projects and tasks.",
+      "answer": {
+        "text": "No, an editor cannot change billing or delete the workspace. Only an owner has the permissions to manage billing and delete a workspace [2].",
+        "sources": [
+          {
+            "label": 1,
+            "file": "support.md",
+            "heading": "Atlas Workspace — fictional support policies > Subscription cancellation",
+            "text": "Atlas Workspace — fictional support policies > Subscription cancellation\n\n\nAn owner can cancel from Settings, Billing. Cancellation stops the next renewal but does not immediately remove access. The workspace keeps its paid features until the end of the current billing period. Cancellation does not delete projects. Export any required data before separately deleting a workspace.",
+            "score": 0.6125842823299412,
+            "part": 1
+          },
+          {
+            "label": 2,
+            "file": "atlas.md",
+            "heading": "Atlas Workspace — fictional product handbook > Roles and permissions",
+            "text": "Atlas Workspace — fictional product handbook > Roles and permissions\n\n\nAtlas has three roles: owner, editor, and viewer. Owners manage billing, membership, and workspace deletion. Editors create and update projects and tasks but cannot change billing or delete a workspace. Viewers can read projects and leave comments but cannot change tasks. Only an owner can change a member's role.",
+            "score": 0.5308531009290759,
+            "part": 1
+          },
+          {
+            "label": 3,
+            "file": "atlas.md",
+            "heading": "Atlas Workspace — fictional product handbook > Inviting guests",
+            "text": "Atlas Workspace — fictional product handbook > Inviting guests\n\n\nAn owner can invite a guest to one selected project. Guests cannot browse other projects or workspace billing. Invitations expire after seven days. If an invitation has expired, the owner must send a new invitation. Removing a guest immediately revokes their project access.",
+            "score": 0.48230885176496024,
+            "part": 1
+          },
+          {
+            "label": 4,
+            "file": "support.md",
+            "heading": "Atlas Workspace — fictional support policies > Refund policy",
+            "text": "Atlas Workspace — fictional support policies > Refund policy\n\n\nAtlas's illustrative refund policy allows a full refund within 14 days of the first payment. Renewal payments are not refundable. The owner must contact support with the workspace ID and payment date. Refund requests do not automatically cancel the subscription; cancellation is a separate action in Billing.",
+            "score": 0.47302360506309243,
+            "part": 1
+          }
+        ],
+        "retrieval_query": "Can an editor change billing or delete the workspace?",
+        "mode": "grounded",
+        "seconds": 9.78,
+        "model": "gpt-4o",
+        "prompt_tokens": 488,
+        "completion_tokens": 28
+      },
+      "retrieval": {
+        "top1": false,
+        "top4": true,
+        "fallback": null
+      },
+      "metrics": [
+        {
+          "name": "Answer Relevancy",
+          "score": 0.5,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.50 because the response fails to directly address the specific questions about an editor's ability to change billing and delete the workspace, leading to a lack of relevance. However, some information may still be somewhat related, just not focused on the core inquiry."
+        },
+        {
+          "name": "Faithfulness",
+          "score": 0.75,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 0.75 because the actual output correctly states that only an owner can delete a workspace, but it implies that only an owner has permissions to delete it, which is a slight misrepresentation of the retrieval context."
+        },
+        {
+          "name": "Contextual Relevancy",
+          "score": 0.05555555555555555,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.06 because the retrieval context primarily discusses subscription cancellation and related policies, which do not address the input question about an editor's capabilities. The relevant statement, 'Editors create and update projects and tasks but cannot change billing or delete a workspace,' directly answers the question but is overshadowed by the irrelevant context."
+        }
+      ]
+    },
+    {
+      "id": "recovery",
+      "kind": "paraphrase",
+      "question": "I accidentally threw away a project yesterday. Can we get it back, and who can do it?",
+      "expected_headings": [
+        "Deleted project recovery"
+      ],
+      "expected_output": "An owner can restore the project from the recycle bin within 30 days, including tasks and documents. After 30 days it is permanently deleted.",
+      "answer": {
+        "text": "Yes, you can get the project back since it was deleted only yesterday. According to the fictional Atlas Workspace handbook, deleted projects stay in the recycle bin for 30 days, during which they can be restored. The project owner is the one who can restore the project, including its tasks and documents, during this period [1].",
+        "sources": [
+          {
+            "label": 1,
+            "file": "atlas.md",
+            "heading": "Atlas Workspace — fictional product handbook > Deleted project recovery",
+            "text": "Atlas Workspace — fictional product handbook > Deleted project recovery\n\n\nDeleted projects stay in the recycle bin for 30 days. An owner can restore a project during that period, including its tasks and documents. After 30 days, deletion is permanent. Deleting an entire workspace is different: it is permanent and cannot be reversed through the recycle bin.",
+            "score": 0.4659122399139024,
+            "part": 1
+          }
+        ],
+        "retrieval_query": "I accidentally threw away a project yesterday. Can we get it back, and who can do it?",
+        "mode": "grounded",
+        "seconds": 1.89,
+        "model": "gpt-4o",
+        "prompt_tokens": 258,
+        "completion_tokens": 66
+      },
+      "retrieval": {
+        "top1": true,
+        "top4": true,
+        "fallback": null
+      },
+      "metrics": [
+        {
+          "name": "Answer Relevancy",
+          "score": 1.0,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 1.00 because the response directly addresses the question about retrieving the project and identifying who can assist with it, without any irrelevant statements."
+        },
+        {
+          "name": "Faithfulness",
+          "score": 0.75,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 0.75 because the actual output references a fictional handbook, which contradicts the factual context provided."
+        },
+        {
+          "name": "Contextual Relevancy",
+          "score": 0.5,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.50 because while the retrieval context mentions that 'Deleted projects stay in the recycle bin for 30 days' and 'An owner can restore a project during that period,' it also includes irrelevant information about permanent deletion that does not help answer the question about recovering the project."
+        }
+      ]
+    },
+    {
+      "id": "invitation",
+      "kind": "paraphrase",
+      "question": "My contractor's invitation link is eight days old and no longer works. What should I do?",
+      "expected_headings": [
+        "Inviting guests"
+      ],
+      "expected_output": "Guest invitations expire after seven days. Ask the owner to send a new invitation.",
+      "answer": {
+        "text": "Since the invitation link for your contractor has expired after eight days, you will need to send a new invitation. According to the fictional Atlas Workspace handbook, invitations expire after seven days, so the owner must issue a new invitation for the contractor to gain access to the project [1].",
+        "sources": [
+          {
+            "label": 1,
+            "file": "atlas.md",
+            "heading": "Atlas Workspace — fictional product handbook > Inviting guests",
+            "text": "Atlas Workspace — fictional product handbook > Inviting guests\n\n\nAn owner can invite a guest to one selected project. Guests cannot browse other projects or workspace billing. Invitations expire after seven days. If an invitation has expired, the owner must send a new invitation. Removing a guest immediately revokes their project access.",
+            "score": 0.4176668054929716,
+            "part": 1
+          }
+        ],
+        "retrieval_query": "My contractor's invitation link is eight days old and no longer works. What should I do?",
+        "mode": "grounded",
+        "seconds": 2.69,
+        "model": "gpt-4o",
+        "prompt_tokens": 250,
+        "completion_tokens": 56
+      },
+      "retrieval": {
+        "top1": true,
+        "top4": true,
+        "fallback": null
+      },
+      "metrics": [
+        {
+          "name": "Answer Relevancy",
+          "score": 1.0,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 1.00 because the response directly addresses the issue of the contractor's invitation link being outdated, providing relevant and actionable advice without any irrelevant statements."
+        },
+        {
+          "name": "Faithfulness",
+          "score": 0.6666666666666666,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.67 because the actual output states that the invitation link for the contractor expired after eight days, which contradicts the retrieval context that specifies invitations expire after seven days."
+        },
+        {
+          "name": "Contextual Relevancy",
+          "score": 0.4,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.40 because while the retrieval context mentions that 'Invitations expire after seven days' and 'If an invitation has expired, the owner must send a new invitation,' the majority of the context provided is irrelevant, such as 'An owner can invite a guest to one selected project' and 'Guests cannot browse other projects or workspace billing,' which do not address the expired invitation issue."
+        }
+      ]
+    },
+    {
+      "id": "refund",
+      "kind": "direct",
+      "question": "Can I get a refund for a renewal payment?",
+      "expected_headings": [
+        "Refund policy"
+      ],
+      "expected_output": "No. Renewal payments are not refundable under the illustrative policy. The 14-day full refund applies only to the first payment.",
+      "answer": {
+        "text": "No, according to the fictional refund policy of Atlas Workspace, renewal payments are not refundable [1].",
+        "sources": [
+          {
+            "label": 1,
+            "file": "support.md",
+            "heading": "Atlas Workspace — fictional support policies > Refund policy",
+            "text": "Atlas Workspace — fictional support policies > Refund policy\n\n\nAtlas's illustrative refund policy allows a full refund within 14 days of the first payment. Renewal payments are not refundable. The owner must contact support with the workspace ID and payment date. Refund requests do not automatically cancel the subscription; cancellation is a separate action in Billing.",
+            "score": 0.5378415530998549,
+            "part": 1
+          },
+          {
+            "label": 2,
+            "file": "support.md",
+            "heading": "Atlas Workspace — fictional support policies > Subscription cancellation",
+            "text": "Atlas Workspace — fictional support policies > Subscription cancellation\n\n\nAn owner can cancel from Settings, Billing. Cancellation stops the next renewal but does not immediately remove access. The workspace keeps its paid features until the end of the current billing period. Cancellation does not delete projects. Export any required data before separately deleting a workspace.",
+            "score": 0.3501819345364667,
+            "part": 1
+          }
+        ],
+        "retrieval_query": "Can I get a refund for a renewal payment?",
+        "mode": "grounded",
+        "seconds": 1.53,
+        "model": "gpt-4o",
+        "prompt_tokens": 321,
+        "completion_tokens": 20
+      },
+      "retrieval": {
+        "top1": true,
+        "top4": true,
+        "fallback": null
+      },
+      "metrics": [
+        {
+          "name": "Answer Relevancy",
+          "score": 1.0,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 1.00 because the response directly addresses the question about obtaining a refund for a renewal payment without including any irrelevant information."
+        },
+        {
+          "name": "Faithfulness",
+          "score": 1.0,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 1.00 because there are no contradictions present, indicating that the actual output aligns perfectly with the retrieval context."
+        },
+        {
+          "name": "Contextual Relevancy",
+          "score": 0.5,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.50 because while there are relevant statements like 'Atlas's illustrative refund policy allows a full refund within 14 days of the first payment' and 'Renewal payments are not refundable,' the majority of the retrieval context contains irrelevant information that does not directly address the refund question."
+        }
+      ]
+    },
+    {
+      "id": "cancel",
+      "kind": "paraphrase",
+      "question": "If we stop renewing today, do our paid tools disappear immediately?",
+      "expected_headings": [
+        "Subscription cancellation"
+      ],
+      "expected_output": "No. Cancellation stops the next renewal, but paid features remain until the current billing period ends. It does not delete projects.",
+      "answer": {
+        "text": "No, if you stop renewing today, your paid tools will not disappear immediately. According to the fictional support policies of Atlas Workspace, cancellation stops the next renewal but does not immediately remove access. You will retain access to the paid features until the end of the current billing period [1].",
+        "sources": [
+          {
+            "label": 1,
+            "file": "support.md",
+            "heading": "Atlas Workspace — fictional support policies > Subscription cancellation",
+            "text": "Atlas Workspace — fictional support policies > Subscription cancellation\n\n\nAn owner can cancel from Settings, Billing. Cancellation stops the next renewal but does not immediately remove access. The workspace keeps its paid features until the end of the current billing period. Cancellation does not delete projects. Export any required data before separately deleting a workspace.",
+            "score": 0.4647355402489434,
+            "part": 1
+          },
+          {
+            "label": 2,
+            "file": "support.md",
+            "heading": "Atlas Workspace — fictional support policies > Refund policy",
+            "text": "Atlas Workspace — fictional support policies > Refund policy\n\n\nAtlas's illustrative refund policy allows a full refund within 14 days of the first payment. Renewal payments are not refundable. The owner must contact support with the workspace ID and payment date. Refund requests do not automatically cancel the subscription; cancellation is a separate action in Billing.",
+            "score": 0.39399427002542226,
+            "part": 1
+          }
+        ],
+        "retrieval_query": "If we stop renewing today, do our paid tools disappear immediately?",
+        "mode": "grounded",
+        "seconds": 2.36,
+        "model": "gpt-4o",
+        "prompt_tokens": 324,
+        "completion_tokens": 57
+      },
+      "retrieval": {
+        "top1": true,
+        "top4": true,
+        "fallback": null
+      },
+      "metrics": [
+        {
+          "name": "Answer Relevancy",
+          "score": 1.0,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 1.00 because the response directly addresses the question about the immediate effects of stopping renewals on paid tools without any irrelevant statements."
+        },
+        {
+          "name": "Faithfulness",
+          "score": 1.0,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 1.00 because there are no contradictions present, indicating that the actual output aligns perfectly with the retrieval context."
+        },
+        {
+          "name": "Contextual Relevancy",
+          "score": 0.25,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.25 because while there are relevant statements like 'Cancellation stops the next renewal but does not immediately remove access' and 'The workspace keeps its paid features until the end of the current billing period,' the majority of the retrieval context is irrelevant, discussing topics like refund policies and project deletion that do not address the question about paid tools disappearing."
+        }
+      ]
+    },
+    {
+      "id": "export",
+      "kind": "hard",
+      "question": "Before closing the workspace, will the downloaded project JSON contain the actual attachment files?",
+      "expected_headings": [
+        "Exports and backups"
+      ],
+      "expected_output": "No. Project JSON includes tasks and document text, but attachments are only download links. Download attachments separately before deleting the workspace.",
+      "answer": {
+        "text": "No, the downloaded project JSON will not contain the actual attachment files. Instead, attachments are listed as download links, and you need to download them separately before deleting a workspace [1].",
+        "sources": [
+          {
+            "label": 1,
+            "file": "atlas.md",
+            "heading": "Atlas Workspace — fictional product handbook > Exports and backups",
+            "text": "Atlas Workspace — fictional product handbook > Exports and backups\n\n\nOwners and editors can export a project as JSON, including tasks and document text. Viewers cannot export projects. Attachments are listed as download links rather than embedded file bytes. Download attachments separately before deleting a workspace. Exports are manual; the demo product does not provide scheduled backups.",
+            "score": 0.6017387806194946,
+            "part": 1
+          },
+          {
+            "label": 2,
+            "file": "support.md",
+            "heading": "Atlas Workspace — fictional support policies > Data location and deletion",
+            "text": "Atlas Workspace — fictional support policies > Data location and deletion\n\n\nThis fictional product handbook specifies an EU data region. Owners can request a workspace data export before deletion. Workspace deletion is permanent. Project deletion has a separate 30-day recovery period. This demo does not store real Atlas customer data and does not establish any actual compliance certification.",
+            "score": 0.4193437586070213,
+            "part": 1
+          },
+          {
+            "label": 3,
+            "file": "atlas.md",
+            "heading": "Atlas Workspace — fictional product handbook > Deleted project recovery",
+            "text": "Atlas Workspace — fictional product handbook > Deleted project recovery\n\n\nDeleted projects stay in the recycle bin for 30 days. An owner can restore a project during that period, including its tasks and documents. After 30 days, deletion is permanent. Deleting an entire workspace is different: it is permanent and cannot be reversed through the recycle bin.",
+            "score": 0.416998536206819,
+            "part": 1
+          },
+          {
+            "label": 4,
+            "file": "atlas.md",
+            "heading": "Atlas Workspace — fictional product handbook > Inviting guests",
+            "text": "Atlas Workspace — fictional product handbook > Inviting guests\n\n\nAn owner can invite a guest to one selected project. Guests cannot browse other projects or workspace billing. Invitations expire after seven days. If an invitation has expired, the owner must send a new invitation. Removing a guest immediately revokes their project access.",
+            "score": 0.3710153129095109,
+            "part": 1
+          }
+        ],
+        "retrieval_query": "Before closing the workspace, will the downloaded project JSON contain the actual attachment files?",
+        "mode": "grounded",
+        "seconds": 2.38,
+        "model": "gpt-4o",
+        "prompt_tokens": 503,
+        "completion_tokens": 37
+      },
+      "retrieval": {
+        "top1": true,
+        "top4": true,
+        "fallback": null
+      },
+      "metrics": [
+        {
+          "name": "Answer Relevancy",
+          "score": 0.6666666666666666,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.67 because the output included a statement that directly contradicts the input question about whether the downloaded project JSON will contain the actual attachment files."
+        },
+        {
+          "name": "Faithfulness",
+          "score": 1.0,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 1.00 because there are no contradictions present, indicating that the actual output aligns perfectly with the retrieval context."
+        },
+        {
+          "name": "Contextual Relevancy",
+          "score": 0.10526315789473684,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.11 because the majority of the retrieval context is irrelevant, focusing on topics like project deletion and guest access, which do not address the question about attachment files in the downloaded project JSON. However, the relevant statements, such as 'Owners and editors can export a project as JSON, including tasks and document text' and 'Attachments are listed as download links rather than embedded file bytes,' provide some insight into the export process."
+        }
+      ]
+    },
+    {
+      "id": "mute",
+      "kind": "hard",
+      "question": "I silenced a project but somebody tagged me and I still got an email. Is that expected?",
+      "expected_headings": [
+        "Notification preferences"
+      ],
+      "expected_output": "Yes. Muting stops project activity notifications, but direct mentions still send an email.",
+      "answer": {
+        "text": "Yes, that is expected. According to the fictional Atlas Workspace handbook, even if you mute a project, you will still receive email notifications for direct mentions [1].",
+        "sources": [
+          {
+            "label": 1,
+            "file": "atlas.md",
+            "heading": "Atlas Workspace — fictional product handbook > Notification preferences",
+            "text": "Atlas Workspace — fictional product handbook > Notification preferences\n\n\nEach member controls their own notification preferences. Instant email is the default. Daily digest sends one summary at 09:00 in the member's chosen time zone. Muting a project stops its activity notifications, but direct mentions still send an email. An owner cannot change another member's personal notification preferences.",
+            "score": 0.4016721120220371,
+            "part": 1
+          }
+        ],
+        "retrieval_query": "I silenced a project but somebody tagged me and I still got an email. Is that expected?",
+        "mode": "grounded",
+        "seconds": 1.84,
+        "model": "gpt-4o",
+        "prompt_tokens": 259,
+        "completion_tokens": 33
+      },
+      "retrieval": {
+        "top1": true,
+        "top4": true,
+        "fallback": null
+      },
+      "metrics": [
+        {
+          "name": "Answer Relevancy",
+          "score": 1.0,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 1.00 because the response directly addressed the user's question about receiving an email after silencing a project, with no irrelevant statements present."
+        },
+        {
+          "name": "Faithfulness",
+          "error": "TimeoutError"
+        },
+        {
+          "name": "Contextual Relevancy",
+          "score": 0.2,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.20 because while the relevant statement notes that 'Muting a project stops its activity notifications, but direct mentions still send an email,' the majority of the retrieval context fails to address the user's specific concern about receiving an email after silencing a project."
+        }
+      ]
+    },
+    {
+      "id": "support",
+      "kind": "direct",
+      "question": "Is there weekend phone support?",
+      "expected_headings": [
+        "Support hours"
+      ],
+      "expected_output": "No. Support operates Monday to Friday, 09:00–17:00 UTC, excluding public holidays. Urgent email reports are reviewed in the next support window.",
+      "answer": {
+        "text": "No, there is no weekend phone support available according to the retrieved reference material [1].",
+        "sources": [
+          {
+            "label": 1,
+            "file": "support.md",
+            "heading": "Atlas Workspace — fictional support policies > Support hours",
+            "text": "Atlas Workspace — fictional support policies > Support hours\n\n\nSupport is available Monday to Friday, 09:00–17:00 UTC, excluding public holidays. The target first response is one business day, not a guaranteed resolution time. There is no weekend phone support. Urgent reports can be emailed at any time and are reviewed during the next support window.",
+            "score": 0.5521859607481728,
+            "part": 1
+          }
+        ],
+        "retrieval_query": "Is there weekend phone support?",
+        "mode": "grounded",
+        "seconds": 2.3,
+        "model": "gpt-4o",
+        "prompt_tokens": 246,
+        "completion_tokens": 18
+      },
+      "retrieval": {
+        "top1": true,
+        "top4": true,
+        "fallback": null
+      },
+      "metrics": [
+        {
+          "name": "Answer Relevancy",
+          "score": 0.0,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.00 because the response directly states that weekend phone support is not available, which fails to positively address the inquiry and leaves the user without the information they were seeking."
+        },
+        {
+          "name": "Faithfulness",
+          "score": 1.0,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 1.00 because there are no contradictions present, indicating that the actual output aligns perfectly with the retrieval context."
+        },
+        {
+          "name": "Contextual Relevancy",
+          "score": 0.25,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.25 because while the relevant statement 'There is no weekend phone support.' directly answers the input, the majority of the context discusses unrelated support hours and response times, leading to a low relevancy score."
+        }
+      ]
+    },
+    {
+      "id": "unrelated-capital",
+      "kind": "unrelated",
+      "question": "What is the capital of France?",
+      "expected_headings": [],
+      "expected_output": "Paris is the capital of France. This is general knowledge, not information from the Atlas handbook.",
+      "answer": {
+        "text": "The capital of France is Paris. This answer is based on general knowledge, as no relevant sources were found in the retrieved reference material.",
+        "sources": [],
+        "retrieval_query": "What is the capital of France?",
+        "mode": "general knowledge",
+        "seconds": 2.47,
+        "model": "gpt-4o",
+        "prompt_tokens": 165,
+        "completion_tokens": 27
+      },
+      "retrieval": {
+        "top1": false,
+        "top4": false,
+        "fallback": true
+      },
+      "metrics": [
+        {
+          "name": "Answer Relevancy",
+          "score": 0.6666666666666666,
+          "threshold": 0.7,
+          "passed": false,
+          "reason": "The score is 0.67 because the output failed to directly answer the question about the capital of France, instead including irrelevant information that did not contribute to the query."
+        }
+      ]
+    },
+    {
+      "id": "unrelated-astronomy",
+      "kind": "unrelated",
+      "question": "Why does the Moon have phases?",
+      "expected_headings": [],
+      "expected_output": "The Moon's phases result from seeing different portions of its sunlit half as it orbits Earth. This is general knowledge, not information from the Atlas handbook.",
+      "answer": {
+        "text": "The Moon has phases due to its orbit around the Earth, which causes the portion of the Moon that is illuminated by the Sun to be visible from Earth in different amounts. As the Moon orbits Earth, the angle between the Earth, Moon, and Sun changes, leading to the various phases:\n\n1. **New Moon**: The Moon is between the Earth and the Sun, and the side of the Moon facing Earth is not illuminated, making it invisible to us.\n\n2. **Waxing Crescent**: A small, crescent-shaped portion of the Moon becomes visible as it starts to move away from the direct line between the Earth and the Sun.\n\n3. **First Quarter**: Half of the Moon is illuminated and visible from Earth. This occurs when the Moon has completed about a quarter of its orbit around Earth.\n\n4. **Waxing Gibbous**: More than half of the Moon is illuminated as it continues to move in its orbit.\n\n5. **Full Moon**: The Earth is between the Moon and the Sun, and the entire face of the Moon is illuminated and visible from Earth.\n\n6. **Waning Gibbous**: The illuminated portion begins to decrease as the Moon continues its orbit.\n\n7. **Last Quarter**: Again, half of the Moon is illuminated, but now the opposite side compared to the first quarter.\n\n8. **Waning Crescent**: A small crescent is visible as the Moon approaches the new moon phase again.\n\nThese phases repeat approximately every 29.5 days, which is the length of a lunar month.",
+        "sources": [],
+        "retrieval_query": "Why does the Moon have phases?",
+        "mode": "general knowledge",
+        "seconds": 4.56,
+        "model": "gpt-4o",
+        "prompt_tokens": 165,
+        "completion_tokens": 317
+      },
+      "retrieval": {
+        "top1": false,
+        "top4": false,
+        "fallback": true
+      },
+      "metrics": [
+        {
+          "name": "Answer Relevancy",
+          "score": 1.0,
+          "threshold": 0.7,
+          "passed": true,
+          "reason": "The score is 1.00 because the response directly addresses the question about the Moon's phases without any irrelevant statements."
+        }
+      ]
+    }
+  ]
+}

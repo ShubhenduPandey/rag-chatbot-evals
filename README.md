@@ -29,7 +29,10 @@ $env:DEMO_ACCESS_CODE = "choose-a-long-random-passphrase"
 .\.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-Or double-click `run.bat` after setup and configuring environment variables.
+Or double-click `run.bat` after setup and configuring the API key. If no
+`DEMO_ACCESS_CODE` environment variable is set, the launcher prints a temporary
+random code in its console for you to copy into the browser. It saves no key/code
+file and binds the local server only to `127.0.0.1`.
 It opens a normal browser-based app; the console remains visible. On macOS/Linux,
 use `python3 -m venv .venv` and `.venv/bin/python` instead. `.env.example` is a
 reference only; the app does not automatically load `.env` files.
