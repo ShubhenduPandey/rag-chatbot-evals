@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "description": "Purpose-written fictional handbook cases. Expected answers are human-readable references, not generated ground truth. Labels fixed before evaluation.",
+  "cases": [
+    {"id": "roles", "kind": "direct", "question": "Can an editor change billing or delete the workspace?", "expected_headings": ["Roles and permissions"], "expected_output": "No. Only owners manage billing or delete a workspace. Editors can create and update projects and tasks."},
+    {"id": "recovery", "kind": "paraphrase", "question": "I accidentally threw away a project yesterday. Can we get it back, and who can do it?", "expected_headings": ["Deleted project recovery"], "expected_output": "An owner can restore the project from the recycle bin within 30 days, including tasks and documents. After 30 days it is permanently deleted."},
+    {"id": "invitation", "kind": "paraphrase", "question": "My contractor's invitation link is eight days old and no longer works. What should I do?", "expected_headings": ["Inviting guests"], "expected_output": "Guest invitations expire after seven days. Ask the owner to send a new invitation."},
+    {"id": "refund", "kind": "direct", "question": "Can I get a refund for a renewal payment?", "expected_headings": ["Refund policy"], "expected_output": "No. Renewal payments are not refundable under the illustrative policy. The 14-day full refund applies only to the first payment."},
+    {"id": "cancel", "kind": "paraphrase", "question": "If we stop renewing today, do our paid tools disappear immediately?", "expected_headings": ["Subscription cancellation"], "expected_output": "No. Cancellation stops the next renewal, but paid features remain until the current billing period ends. It does not delete projects."},
+    {"id": "export", "kind": "hard", "question": "Before closing the workspace, will the downloaded project JSON contain the actual attachment files?", "expected_headings": ["Exports and backups"], "expected_output": "No. Project JSON includes tasks and document text, but attachments are only download links. Download attachments separately before deleting the workspace."},
+    {"id": "mute", "kind": "hard", "question": "I silenced a project but somebody tagged me and I still got an email. Is that expected?", "expected_headings": ["Notification preferences"], "expected_output": "Yes. Muting stops project activity notifications, but direct mentions still send an email."},
+    {"id": "support", "kind": "direct", "question": "Is there weekend phone support?", "expected_headings": ["Support hours"], "expected_output": "No. Support operates Monday to Friday, 09:00–17:00 UTC, excluding public holidays. Urgent email reports are reviewed in the next support window."},
+    {"id": "unrelated-capital", "kind": "unrelated", "question": "What is the capital of France?", "expected_headings": [], "expected_output": "Paris is the capital of France. This is general knowledge, not information from the Atlas handbook."},
+    {"id": "unrelated-astronomy", "kind": "unrelated", "question": "Why does the Moon have phases?", "expected_headings": [], "expected_output": "The Moon's phases result from seeing different portions of its sunlit half as it orbits Earth. This is general knowledge, not information from the Atlas handbook."}
+  ]
+}
